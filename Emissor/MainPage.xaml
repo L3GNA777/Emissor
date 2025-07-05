@@ -1,0 +1,60 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Emissor.MainPage"
+             NavigationPage.HasNavigationBar="False">
+    
+    <Grid ColumnDefinitions="*,2*,*" BackgroundColor="Gray">
+        <Grid Grid.Column="1" RowDefinitions="*,2*,*">
+
+            <!-- Botão (mantido igual) -->
+            <AbsoluteLayout Grid.Row="1">
+                <Border StrokeThickness="7" Stroke="Black" StrokeShape="Ellipse"
+                        AbsoluteLayout.LayoutBounds="0.5,0.5,0.2,0.4"
+                        AbsoluteLayout.LayoutFlags="All">
+                    <Button x:Name="Button" ImageSource="ligar.png"
+                            BackgroundColor="Red" Padding="20" Clicked="Button_Clicked"/>
+                </Border>
+            </AbsoluteLayout>
+
+            <!-- Label com Border ajustável -->
+            <Grid Grid.Row="2" HorizontalOptions="Center" VerticalOptions="Start" Margin="0,0,0,20">
+                <Border StrokeShape="RoundRectangle 10,10,10,10"
+                        BackgroundColor="Black"
+                        Padding="20,10">
+                    <!-- Ajuste o Padding conforme necessário -->
+                    <Label x:Name="Send" Text="Send" TextColor="White"
+                           FontSize="Large" HorizontalOptions="Center" VerticalOptions="Center"/>
+                </Border>
+            </Grid>
+        </Grid>
+
+        <Grid Grid.Column="0" RowDefinitions="*, 3*" Margin="20">
+            <Grid Grid.Row="1">
+                <Border BackgroundColor="Red"
+                        StrokeThickness="3"
+                        Stroke="Black"
+                        StrokeShape="RoundRectangle 10,10,10,10">
+                    <Label x:Name="ErrorsLabel"
+                           Text=""
+                           FontSize="18"/>
+                </Border>
+            </Grid>
+        </Grid>
+
+        <Grid Grid.Column="2" RowDefinitions="*, 3*" Margin="20">
+            <Grid Grid.Row="1">
+                <Border BackgroundColor="Green"
+                        StrokeThickness="3"
+                        Stroke="Black"
+                        StrokeShape="RoundRectangle 10,10,10,10">
+                    <Label x:Name="StatusLabel"
+                           Text=""
+                           FontSize="18"/>
+                </Border>
+            </Grid>
+        </Grid>
+
+    </Grid>
+
+</ContentPage>
