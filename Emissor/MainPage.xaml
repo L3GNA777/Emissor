@@ -7,7 +7,69 @@
     <Grid ColumnDefinitions="*,2*,*" BackgroundColor="Gray">
         <Grid Grid.Column="1" RowDefinitions="*,2*,*">
 
-            <!-- Botão (mantido igual) -->
+            <AbsoluteLayout Grid.Row="0">
+
+                <Picker x:Name="SerialPortPicker"
+                        BackgroundColor="White"
+                        Title="Selecione a porta:"
+                        FontSize="16"
+                        FontFamily="pixel"
+                        AbsoluteLayout.LayoutBounds="0.5, 0.07, 0.3, 0.38"
+                        AbsoluteLayout.LayoutFlags="All"/>
+
+                <Border Stroke="Black"
+                        StrokeThickness="3"
+                        StrokeShape="Ellipse"
+                        AbsoluteLayout.LayoutBounds="0.72, 0.2, 0.07, 0.28"
+                        AbsoluteLayout.LayoutFlags="All">
+                    <Button x:Name="RefreshPortsButton"
+                            ImageSource="refresh.png"
+                            BackgroundColor="SteelBlue"
+                            Clicked="OnRefreshPortsClicked"                        
+                            />
+                </Border>
+
+                <Entry x:Name="EntryBrokerAdress"
+                       BackgroundColor="White"
+                       FontFamily="pixel"
+                       Placeholder="Enter the broker adress"
+                       AbsoluteLayout.LayoutBounds="0.5 ,0.63 , 0.3, 0.25"
+                       AbsoluteLayout.LayoutFlags="All"
+                       />
+
+                <Border Stroke="Black"
+                        StrokeThickness="3"
+                        StrokeShape="Ellipse"
+                        AbsoluteLayout.LayoutBounds="0.72, 0.63, 0.07, 0.28"
+                        AbsoluteLayout.LayoutFlags="All">
+                    <Button ImageSource="save.png"
+                            BackgroundColor="White"
+                            Clicked="SaveBrokerAddress"                       
+                            />
+                </Border>
+
+                <Entry x:Name="EntryBaudRate"
+                       BackgroundColor="White"
+                       FontFamily="pixel"
+                       Placeholder="Enter the baud rate"
+                       AbsoluteLayout.LayoutBounds="0.5 ,1 , 0.3, 0.25"
+                       AbsoluteLayout.LayoutFlags="All"
+                       />
+
+                <Border Stroke="Black"
+                        StrokeThickness="3"
+                        StrokeShape="Ellipse"
+                        AbsoluteLayout.LayoutBounds="0.72, 1.05, 0.07, 0.28"
+                        AbsoluteLayout.LayoutFlags="All">
+                    <Button ImageSource="save.png"
+                            BackgroundColor="White"
+                            Clicked="OnB_R_ButtonClicked"                        
+                            />
+                </Border>
+
+            </AbsoluteLayout>
+
+
             <AbsoluteLayout Grid.Row="1">
                 <Border StrokeThickness="7" Stroke="Black" StrokeShape="Ellipse"
                         AbsoluteLayout.LayoutBounds="0.5,0.5,0.2,0.4"
@@ -17,40 +79,80 @@
                 </Border>
             </AbsoluteLayout>
 
-            <!-- Label com Border ajustável -->
             <Grid Grid.Row="2" HorizontalOptions="Center" VerticalOptions="Start" Margin="0,0,0,20">
                 <Border StrokeShape="RoundRectangle 10,10,10,10"
                         BackgroundColor="Black"
                         Padding="20,10">
-                    <!-- Ajuste o Padding conforme necessário -->
-                    <Label x:Name="Send" Text="Send" TextColor="White"
-                           FontSize="Large" HorizontalOptions="Center" VerticalOptions="Center"/>
+
+                    <Label x:Name="Send" Text="Send" TextColor="White" FontFamily="pixel"
+                           FontSize="24" HorizontalOptions="Center" VerticalOptions="Center"/>
                 </Border>
             </Grid>
         </Grid>
 
-        <Grid Grid.Column="0" RowDefinitions="*, 3*" Margin="20">
+        <Grid Grid.Column="0" RowDefinitions="0.5*, 3*" Margin="20" Padding="20">
+            <Grid Grid.Row="0">
+                <Border BackgroundColor="IndianRed"
+                        StrokeThickness="3"
+                        Stroke="Black"
+                        StrokeShape="RoundRectangle 0,10,10,0">
+                    <Label x:Name="tittleErrors"
+                           Text="ERRORS"
+                           FontFamily="pixel"
+                           FontSize="60"                          
+                           HorizontalOptions="Center"
+                           VerticalOptions="Center"/>
+                </Border>
+            </Grid>
+
             <Grid Grid.Row="1">
-                <Border BackgroundColor="Red"
+                <Border BackgroundColor="LightSlateGray"
                         StrokeThickness="3"
                         Stroke="Black"
                         StrokeShape="RoundRectangle 10,10,10,10">
-                    <Label x:Name="ErrorsLabel"
-                           Text=""
-                           FontSize="18"/>
+                    <ScrollView x:Name="ErrorsScrollView"
+                                VerticalScrollBarVisibility="Always">
+                        <Label x:Name="ErrorsLabel"
+                               FontFamily="pixel"
+                               Text=""
+                               FontSize="18"
+                               Margin="10"
+                               LineBreakMode="WordWrap"
+                               TextColor="Black"/>
+                    </ScrollView>
                 </Border>
             </Grid>
         </Grid>
 
-        <Grid Grid.Column="2" RowDefinitions="*, 3*" Margin="20">
+        <Grid Grid.Column="2" RowDefinitions="0.5*, 3*" Margin="20" Padding="20">
+            <Grid Grid.Row="0">
+                <Border BackgroundColor="CadetBlue"
+                        StrokeThickness="3"
+                        Stroke="Black"
+                        StrokeShape="RoundRectangle 0,10,10,0">
+                    <Label x:Name="tittleStatus"
+                           Text="STATUS"
+                           FontFamily="pixel"
+                           FontSize="60"
+                           HorizontalOptions="Center"
+                           VerticalOptions="Center"/>
+                </Border>
+            </Grid>
+
             <Grid Grid.Row="1">
-                <Border BackgroundColor="Green"
+                <Border BackgroundColor="LightSlateGray"
                         StrokeThickness="3"
                         Stroke="Black"
                         StrokeShape="RoundRectangle 10,10,10,10">
-                    <Label x:Name="StatusLabel"
-                           Text=""
-                           FontSize="18"/>
+                    <ScrollView x:Name="StatusScrollView"
+                                VerticalScrollBarVisibility="Always">
+                        <Label x:Name="StatusLabel"
+                               FontFamily="pixel"
+                               Text=""
+                               FontSize="18"
+                               Margin="10"
+                               LineBreakMode="WordWrap"/>
+                    </ScrollView>
                 </Border>
             </Grid>
         </Grid>
